@@ -1,0 +1,56 @@
+Point:
+1. stack is an array;
+2. top
+3. use assert to check whether the stack is already full.
+   assert(test) terminates program whith error message if test fails.
+
+
+
+
+
+IntStack.h:
+// Integer Stack ADO header file
+void StackInt(); // set up empty stack
+int StackIsEmpty(); // check whether stack is empty
+void StackPush(int); // insert int on top of stack
+int StackPop(); // remove int from top of stack
+
+
+IntStack.c:
+
+// Interger Stack ADO implementation
+
+#include "IntStack.h"
+#include <assert.h>
+
+#define MAXITEMS 10
+
+
+
+static struct{
+	int item[MAXITEMS};             //create an array
+	int top;
+} stackObject;                                      // defines the Data Object
+
+void StackInt(){
+	stackObject.top = -1;
+}
+
+int StackIsEmpty(){.                        // check whether stack is empty
+	return (stackObject.top<0);
+}
+
+void StackPush(int n){                   // insert int n on top of stack
+	assert(stackObject.top < MAXTEMS-1); // check whether the stack is already full?
+	stackObject.top ++;
+	int i = stackObject.top;      // the new int's index is i
+	stackObject.item[i] = n;
+	
+	
+int StackPop(){                               // remove int from top of stack
+	assert(stackObject.top > -1);  //if the stack is empty , we can't pop anything
+	int i= stackObject.top;
+	int n = stackObject.item[i];
+	stackObject.top--;
+	return n;
+}
